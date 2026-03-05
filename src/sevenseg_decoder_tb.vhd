@@ -55,7 +55,7 @@ begin
      test_process : process
      begin
         w_hex <= x"0"; wait for 10 ns;
-        assert w_seg_n = "1000000" report "ERROR on 0" severity failure;
+        assert w_seg_n = "0000001" report "ERROR on 0" severity failure;
         
         w_hex <= x"1"; wait for 10 ns;
         assert w_seg_n = "1111001" report "ERROR on 1" severity failure;
