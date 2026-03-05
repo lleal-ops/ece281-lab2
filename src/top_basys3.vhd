@@ -77,20 +77,20 @@ entity top_basys3 is
 end top_basys3;
 
 architecture top_basys3_arch of top_basys3 is 
-    signal seg_dec : std_logic_vector(6 downto 0);
+    signal seg_raw : std_logic_vector(6 downto 0);
 
 begin
   -- declare the component of your top-level design
     decoder_inst: entity work.sevenseg_decoder
     port map (
         i_hex => sw,
-        o_seg_n => seg
+        o_seg_n => seg_raw
     );
 
   -- create wire to connect button to 7SD enable (active-low)
     an <= "1110" when btnC = '1' else "1111";
     
-    seg <= seg_dec when btnC = '1' else "1111111";
+    seg <= seg_raw when btnC = '1' else (others => '1');
   
 	-- PORT MAPS ----------------------------------------
 
