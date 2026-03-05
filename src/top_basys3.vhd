@@ -88,9 +88,9 @@ begin
     );
 
   -- create wire to connect button to 7SD enable (active-low)
-    an <= "1110" when btnC = '0' else "1111";
+    an <= "0111" when btnC = '1' else "1111";
     
-    seg <= seg_raw when btnC = '0' else (others => '1');
+    seg <= seg_raw when btnC = '1' else (others => '1');
   
 	-- PORT MAPS ----------------------------------------
 
