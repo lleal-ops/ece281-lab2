@@ -77,6 +77,7 @@ entity top_basys3 is
 end top_basys3;
 
 architecture top_basys3_arch of top_basys3 is 
+    signal seg_dec : std_logic_vector(6 downto 0);
 
 begin
   -- declare the component of your top-level design
@@ -88,6 +89,8 @@ begin
 
   -- create wire to connect button to 7SD enable (active-low)
     an <= "1110" when btnC = '1' else "1111";
+    
+    seg <= seg_dec when btnC = '1' else "1111111";
   
 	-- PORT MAPS ----------------------------------------
 
