@@ -78,6 +78,7 @@ end top_basys3;
 
 architecture top_basys3_arch of top_basys3 is 
     signal seg_raw : std_logic_vector(6 downto 0);
+    signal w_7SD_EN_n : std_logic;
 
 begin
   -- declare the component of your top-level design
@@ -88,9 +89,11 @@ begin
     );
 
   -- create wire to connect button to 7SD enable (active-low)
-    an <= "1110" when btnC = '0' else "1111";
+    w_7SD_EN_n <= not btnC;
     
-    seg <= seg_raw when btnC = '0' else (others => '1');
+    an <= (0 => w_7SD_EN_n, others => '1');
+    
+    seg <= seg_raw when btnC = '1' else (others => '1');
   
 	-- PORT MAPS ----------------------------------------
 
